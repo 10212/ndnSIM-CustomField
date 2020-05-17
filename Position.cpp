@@ -22,6 +22,7 @@ namespace ndn {
 
         template<ndn::encoding::Tag TAG>
         size_t Position::wireEncode(ndn::EncodingImpl<TAG> &encoder) const {
+	//Because Vector3D holds three double, so the lenght is set to 3*8 bytes
             size_t length = 24;
 
             length += encoder.prependVarNumber(length);
@@ -43,12 +44,8 @@ namespace ndn {
             y = ((double*)temp)[1];
             z = ((double*)temp)[2];
 
-
-
-	    //std::cout<<" getting iterator"<<std::endl;
             ns3::Vector3D position = ns3::Vector3D(x,y,z);
             m_position = position;
-	    //std::cout<<" Additional Data Constructor Block& is called Block ="<<ms<<"   ms = "<<ms<<std::endl;
 	}
 
 
